@@ -1,10 +1,6 @@
 package org.example.copier;
 
-// File: UberManifest.java
-public record UberManifest(
-    String confirmedManifestPath,
-    String acceptedManifestPath,
-    String rejectedManifestPath,
-    String droppedManifestPath,
-    String failedManifestPath
-) {}
+import java.nio.file.Path;
+
+// Record type representing the uber manifest.
+public record UberManifest(Path uploadedManifest, Path rejectedManifest, Path droppedManifest, Path failedManifest) {}

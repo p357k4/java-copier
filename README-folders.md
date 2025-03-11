@@ -13,7 +13,7 @@ Application must:
 - run component specified in arguments in main function
 - use key file for authorization in GCP
 - use logger
-- use virtual threads to wrap I/O operations
+- use virtual threads to wrap blocking operations
 - move files atomically
 - handle InterruptedException inside while loop to interrupt thread
 - use while endless loop until current thread is interrupted
@@ -22,11 +22,10 @@ File Monitoring component:
 - monitors folder
     - files/incoming
 - starts with empty previous map of file name to file size
-- lists files every one minute
-- creates current map of file name to file size
-- compares size from previous map with size from current map
+- lists files every one minute and creates current map of file name to file size
+- compares file sizes from previous map with file sizes from current map
 - moves file without a change in size in two consecutive listings to files/landed
-- replace previous map value by current map value
+- assigns current map variable to previous map variable
 
 File Filtering component:
 - monitors folder
@@ -44,30 +43,25 @@ File Uploading component:
     - files/uploaded
 - moves file to files/dropped folder after RETRY_LIMIT failed attempts
 - after successful upload
-    - create confirmation file (must use record type) in files/confirmed folder in json format with:
-        - source file path (in local file system)
-        - target file path (in gcs)
     - moves file to files/uploaded folder
 
 Manifest component:
 - monitors folders:
-    - files/confirmed
+    - files/uploaded
     - files/accepted
     - files/rejected
     - files/dropped
     - files/failed
 - every one hour or after reaching 1000 files list files in all monitored folders folders
-    - creates manifest with uploaded target file paths in manifests/confirmed folder
-    - creates manifest with uploaded source file paths in manifests/accepted folder
+    - creates manifest with uploaded file paths in manifests/uploaded folder
     - creates manifest with rejected file paths in manifests/rejected folder
     - creates manifest with dropped file paths in manifests/dropped folder
     - creates manifest with failed file paths in manifests/failed folder
-    - creates uber manifest (must use record type) in manifests/landed folder with
-        - uploaded target files paths manifest path
-        - uploaded source files paths manifest path
-        - rejected files paths manifest path
-        - dropped files paths manifest path
-        - failed failes paths manifest path
+- creates uber manifest (must use record type) in manifests/landed folder with
+    - uploaded files paths manifest path
+    - rejected files paths manifest path
+    - dropped files paths manifest path
+    - failed failes paths manifest path
 
 Manifest Uploading component:
 - monitors folder:
@@ -89,6 +83,6 @@ Cleaning component:
     - moves rejected files manifest file to manifets/completed/rejected folder
     - moves dropped files manifest file to manifets/completed/dropped folder
     - moves failed files manifest file to manifets/completed/failed folder
-    - moves uber manifest to manifets/completed folder
+    - moves uber manifest to manifets/completed/uber folder
 
 Create each file separately for download.
