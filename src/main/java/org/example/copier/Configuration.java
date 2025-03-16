@@ -1,46 +1,22 @@
 package org.example.copier;
 
-// Configuration.java
-import java.nio.file.Path;
-import java.util.List;
-
 public record Configuration(
-    Path incomingFolder,
-    Path landedFolder,
-    Path acceptedFolder,
-    Path rejectedFolder,
-    Path failedFolder,
-    Path uploadedFolder,
-    Path droppedFolder,
-    Path completedFolder,
-    Path manifestsLandedFolder,
-    Path manifestsIncomingFolder,
-    Path manifestsUploadedFolder,
-    Path manifestsFailedFolder,
-    Path manifestsDroppedFolder,
-    Path manifestsCompletedFolder,
-    int retryLimit,
-    String gcsBucket,
-    String gcsKeyFile,
-    int manifestMaxFiles,
-    long manifestIntervalMinutes
-) {
-    public List<Path> getAllDirectories() {
-        return List.of(
-            incomingFolder,
-            landedFolder,
-            acceptedFolder,
-            rejectedFolder,
-            failedFolder,
-            uploadedFolder,
-            droppedFolder,
-            completedFolder,
-            manifestsLandedFolder,
-            manifestsIncomingFolder,
-            manifestsUploadedFolder,
-            manifestsFailedFolder,
-            manifestsDroppedFolder,
-            manifestsCompletedFolder
-        );
-    }
-}
+    String filesIncomingDir,
+    String filesLandedDir,
+    String filesCompressedDir,
+    String filesCompletedDir,
+    String filesAcceptedDir,
+    String filesRejectedDir,
+    String filesFailedDir,
+    String filesDroppedDir,
+    String filesUploadedDir,
+    String manifestsIncomingDir,
+    String manifestsLandedDir,
+    String manifestsUploadedDir,
+    String manifestsFailedDir,
+    String manifestsRegisteredDir,
+    String manifestsCompletedDir,
+    String manifestsTemporaryDir,
+    String gcpDir,
+    long monitorIntervalMillis
+) {}

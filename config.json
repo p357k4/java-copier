@@ -1,0 +1,20 @@
+{
+  "filesIncomingDir": "data/files/incoming",
+  "filesLandedDir": "data/files/landed",
+  "filesCompressedDir": "data/files/compressed",
+  "filesCompletedDir": "data/files/completed",
+  "filesAcceptedDir": "data/files/accepted",
+  "filesRejectedDir": "data/files/rejected",
+  "filesFailedDir": "data/files/failed",
+  "filesDroppedDir": "data/files/dropped",
+  "filesUploadedDir": "data/files/uploaded",
+  "manifestsTemporaryDir": "data/manifests/temporary",
+  "manifestsIncomingDir": "data/manifests/incoming",
+  "manifestsLandedDir": "data/manifests/landed",
+  "manifestsUploadedDir": "data/manifests/uploaded",
+  "manifestsFailedDir": "data/manifests/failed",
+  "manifestsRegisteredDir": "data/manifests/registered",
+  "manifestsCompletedDir": "data/manifests/completed",
+  "gcpDir": "data/gcp",
+  "monitorIntervalMillis": 10000
+}
