@@ -1,0 +1,17 @@
+{
+  "incoming": "data/files/incoming",
+  "landed": "data/files/landed",
+  "accepted": "data/files/accepted",
+  "rejected": "data/files/rejected",
+  "failed": "data/files/failed",
+  "dropped": "data/files/dropped",
+  "completed": "data/files/completed",
+  "uploaded": "data/files/uploaded",
+  "manifestLanded": "data/manifests/landed",
+  "manifestDropped": "data/manifests/dropped",
+  "manifestUploaded": "data/manifests/uploaded",
+  "manifestFailed": "data/manifests/failed",
+  "manifestIncoming": "data/manifests/incoming",
+  "manifestCompleted": "data/manifests/completed",
+  "gcs": "data/gcs"
+}
